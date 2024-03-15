@@ -1,31 +1,27 @@
-import { AppRoot, CellButton, Group, Panel, PanelHeader, SplitLayout, usePlatform, View } from "@vkontakte/vkui";
+import { AppRoot, CellButton, Panel, PanelHeader, SplitLayout, usePlatform, View } from "@vkontakte/vkui";
 import { useState } from "react";
+import TaskOneForm from "./features/task-one/components/task-one-form.tsx";
 
 function App() {
   const platform = usePlatform();
-  const [activePanel, setActivePanel] = useState('greetings');
+  const [activePanel, setActivePanel] = useState('task1');
 
   return (
     <AppRoot>
       <SplitLayout header={platform !== 'vkcom' && <PanelHeader delimiter="none"/>}>
         <View activePanel={activePanel}>
-          <Panel id="greetings">
-            <PanelHeader>Panel greetings</PanelHeader>
-            <Group>
-              <CellButton onClick={() => setActivePanel('form')}>Go to panel form</CellButton>
-            </Group>
+          <Panel id="task1">
+            <PanelHeader>Panel task one</PanelHeader>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+              <CellButton onClick={() => setActivePanel('task2')}>Go to task two</CellButton>
+              <TaskOneForm/>
+            </div>
           </Panel>
-          <Panel id="form">
-            <PanelHeader>Panel form</PanelHeader>
-            <Group>
-              <CellButton onClick={() => setActivePanel('finish')}>Go to panel finish</CellButton>
-            </Group>
-          </Panel>
-          <Panel id="finish">
-            <PanelHeader>Panel finish</PanelHeader>
-            <Group>
-              <CellButton onClick={() => setActivePanel('greetings')}>Go to panel greetings</CellButton>
-            </Group>
+          <Panel id="task2">
+            <PanelHeader>Panel task two</PanelHeader>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+              <CellButton onClick={() => setActivePanel('task1')}>Go to task one</CellButton>
+            </div>
           </Panel>
         </View>
       </SplitLayout>
