@@ -1,6 +1,7 @@
 import { AppRoot, CellButton, Panel, PanelHeader, SplitLayout, usePlatform, View } from "@vkontakte/vkui";
 import { useState } from "react";
 import TaskOneForm from "./features/task-one/components/task-one-form.tsx";
+import TaskTwoForm from "./features/task-two/components/task-two-form.tsx";
 
 function App() {
   const platform = usePlatform();
@@ -21,6 +22,7 @@ function App() {
             <PanelHeader>Panel task two</PanelHeader>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <CellButton onClick={() => setActivePanel('task1')}>Go to task one</CellButton>
+              <TaskTwoForm/>
             </div>
           </Panel>
         </View>
